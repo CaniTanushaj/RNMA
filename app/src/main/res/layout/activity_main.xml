@@ -14,7 +14,7 @@
         android:layout_marginTop="44dp"
         android:background="#E3E3E3"
         android:ems="10"
-        android:hint="Molimo unesite lozinku!"
+        android:hint="Molimo unesite lozinku"
         android:inputType="text"
         android:password="true"
         android:textColorHint="#FFFFFF"
@@ -28,7 +28,7 @@
         android:id="@+id/passwordLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="20dp"
         android:text="Lozinka"
         android:textColor="#424141"
@@ -56,13 +56,14 @@
         android:id="@+id/emailLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="332dp"
+        android:layout_marginTop="4dp"
         android:text="Email"
         android:textColor="#424141"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
         android:id="@+id/loginBtn"
