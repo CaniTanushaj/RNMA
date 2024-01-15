@@ -54,32 +54,36 @@ public class ProfileActivity extends AppCompatActivity {
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
 
 
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @SuppressLint("NonConstantResourceId")
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.categori:
-//                        drawerLayout.closeDrawer(GravityCompat.START);
-//                        // Toast.makeText(ProfileActivity.this, "Kategorije", Toast.LENGTH_SHORT).show();
-//                        // Start PastryActivity
-//                        startActivity(new Intent(ProfileActivity.this, PastryActivity.class));
-//                        break;
-//                    case R.id.history:
-//                        drawerLayout.closeDrawer(GravityCompat.START);
-//                        Toast.makeText(ProfileActivity.this, "Povijest", Toast.LENGTH_SHORT).show();
-//                        // You can add logic here to handle the "Povijest" case if needed
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
-//    }
-//    private void fragmentR(Fragment fragment) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.remove(R.id.frameLayout, fragment);
-//        fragmentTransaction.commit();
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if(item.getItemId()==R.id.categori) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    Toast.makeText(ProfileActivity.this, "Kategorije", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(ProfileActivity.this, PastryActivity.class));
+
+
+                }
+                if(item.getItemId()==R.id.history) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    Toast.makeText(ProfileActivity.this, "Kategorije", Toast.LENGTH_SHORT).show();
+                    fragmentR(new HistoryFragment());
+
+                }
+                return true;
+            }
+        });
+
+
+    }
+    private void fragmentR(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout,fragment);
+        fragmentTransaction.commit();
     }
 }
 
