@@ -6,6 +6,8 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:openDrawer="start"
+    android:fitsSystemWindows="true"
     tools:context=".ProfileActivity">
 
     <!-- Main content -->
@@ -13,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Toolbar with three lines icon for Navigation Drawer -->
+
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -22,19 +25,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-
-        <!-- ViewPager to hold the fragments for each tab -->
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/toolbar" >
-
-        </androidx.viewpager.widget.ViewPager>
-
         <ImageButton
             android:id="@+id/menuButton"
             android:layout_width="wrap_content"
+            android:visibility="invisible"
             android:layout_height="64dp"
             app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
 
@@ -50,7 +44,22 @@
             android:textColorHint="#FFFFFF"
             android:textSize="20sp" />
 
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        app:menu="@menu/menu_bar"
+        android:id="@+id/nav"
+        app:headerLayout="@layout/header"
+        android:layout_height="match_parent"/>
+
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
