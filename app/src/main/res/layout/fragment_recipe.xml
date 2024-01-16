@@ -1,0 +1,40 @@
+<!-- fragment_recipe.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".RecipeFragment">
+
+    <ImageView
+        android:id="@+id/imageViewRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background"
+    android:contentDescription="Recipe Image"/>
+
+    <EditText
+        android:id="@+id/editTextRecipeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Naziv proizvoda"
+        android:inputType="textCapSentences" />
+
+    <EditText
+        android:id="@+id/editTextRecipeDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dodajte recept za željeni proizvod"
+        android:inputType="textMultiLine"
+        android:lines="5" />
+
+    <Button
+        android:id="@+id/buttonSaveRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Spremite recept"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#BEBEBE"/>
+</LinearLayout>
