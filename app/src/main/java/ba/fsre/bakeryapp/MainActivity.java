@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                             if ( task.isSuccessful()){
                                 Toast.makeText(
                                         getApplicationContext(),
-                                        "Uspijeh",
+                                        "Uspješna prijava!",
                                         Toast.LENGTH_LONG).show();
                                 Intent i = new Intent(MainActivity.this, ProfileActivity.class);
                                 startActivity(i);
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                             } else {
                                 Toast.makeText(
                                         getApplicationContext(),
-                                        "Pogreska",
+                                        "Neuspješna prijava!,pokušajte ponovo",
                                         Toast.LENGTH_LONG).show();
 
                             }
