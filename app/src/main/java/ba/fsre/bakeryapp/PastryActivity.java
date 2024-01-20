@@ -21,6 +21,7 @@ public class PastryActivity extends AppCompatActivity {
         ImageView kruhImg = findViewById(R.id.kruhImg);
         ImageView lisnatoImg = findViewById(R.id.lisnatoImg);
         ImageView pecivoImg = findViewById(R.id.pecivoImg);
+        ImageView pitaImg = findViewById(R.id.pitaImg);
 
         kruhImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,13 @@ public class PastryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showToast("Kliknuli ste na treći ImageView");
+            }
+        });
+
+        pitaImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("Kliknuli ste na četvrti ImageView");
             }
         });
     }

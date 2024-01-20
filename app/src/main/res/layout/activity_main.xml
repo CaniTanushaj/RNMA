@@ -52,7 +52,7 @@
             android:layout_marginRight="40dp"
             android:layout_weight="1"
             android:hint="Upišite email.."
-            android:textColor="#ffffff"
+            android:textColor="#494848"
             android:textColorHint="#494848"
             android:textSize="12dp"
             tools:ignore="TextSizeCheck" />
@@ -65,7 +65,8 @@
             android:layout_marginRight="40dp"
             android:layout_weight="1"
             android:hint="Upišite lozinku.."
-            android:textColor="#ffffff"
+            android:inputType="textPassword"
+            android:textColor="#494848"
             android:textColorHint="#494848"
             android:textSize="12dp"
             tools:ignore="TextSizeCheck" />
