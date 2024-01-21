@@ -47,7 +47,20 @@
         <FrameLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="414dp"
+                android:id="@+id/addBtn"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+
+                android:layout_marginTop="60dp"
+                android:background="@color/black"
+                android:text="Dodaj"
+                android:textColorHighlight="#3F51B5"
+                android:textColorLink="#E91E63" />
+        </FrameLayout>
 
     </RelativeLayout>
 
