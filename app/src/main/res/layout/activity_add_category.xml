@@ -14,6 +14,7 @@
         android:layout_height="200dp"
         android:src="@drawable/_87103802_565470145264752_5911948296000355530_n_removebg_preview"
         android:layout_gravity="center"
+        android:id="@+id/uploadImg"
         android:textSize="45sp"
         android:gravity="center"/>
 

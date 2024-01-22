@@ -4,14 +4,16 @@ public class Category {
     String id;
     String name;
     String description;
+    String imageURL;
 
     public Category() {
     }
 
-    public Category(String name, String description,String id) {
+    public Category(String name, String description,String id,String imageURL) {
         this.name = name;
         this.description = description;
         this.id=id;
+        this.imageURL=imageURL;
     }
 
     public String getName() {
@@ -36,5 +38,13 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }
