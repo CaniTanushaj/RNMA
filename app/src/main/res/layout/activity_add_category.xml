@@ -15,33 +15,14 @@
         android:padding="30dp">
 
         <ImageView
-            android:id="@+id/imagePreview"
+            android:id="@+id/uploadImg"
             android:layout_width="match_parent"
             android:layout_height="83dp"
             android:layout_marginLeft="0dp"
-            tools:src="@android:drawable/ic_menu_camera" />
+            android:background="@color/white"
+            android:src="@drawable/addimage1"/>
 
-        <Button
-            android:id="@+id/selectImageBtn"
-            android:layout_width="221dp"
-            android:layout_height="49dp"
-            android:layout_gravity="center"
-            android:backgroundTint="#9A9797"
-            android:text="Odaberi sliku"
-            android:textColorHighlight="#252424"
-            android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/uploadImageBtn"
-            android:layout_width="221dp"
-            android:layout_height="49dp"
-            android:layout_gravity="center"
-            android:backgroundTint="#9A9797"
-            android:gravity="center"
-            android:text="Učitaj sliku"
-            android:textColorHighlight="#252424"
-            android:textColorLink="#231E1E"
-            android:textSize="16sp" />
 
 
         <EditText

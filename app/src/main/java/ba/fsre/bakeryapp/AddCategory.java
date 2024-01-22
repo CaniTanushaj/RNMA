@@ -52,35 +52,35 @@ public class AddCategory extends AppCompatActivity {
         EditText recipeName = findViewById(R.id.categoryName);
         EditText recipeDescription = findViewById(R.id.categoryDescription);
         Button addBtn = findViewById(R.id.btnInsertData);
-        ImageView recipeImgae = findViewById(R.id.uploadImg);
+        ImageView uploadImage = findViewById(R.id.uploadImg);
 
             //TREBA DORADIT JER CRESHA UPLOAD
-//        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
-//                new ActivityResultContracts.StartActivityForResult(),
-//                new ActivityResultCallback<ActivityResult>() {
-//                    @Override
-//                    public void onActivityResult(ActivityResult o) {
-//                         if(o.getResultCode()== Activity.RESULT_OK){
-//                             Intent data = o.getData();
-//                             imageUri = data.getData();
-//                             uploadImage.setImageURI(imageUri);
-//
-//                         } else {
-//                             Toast.makeText(AddCategory.this,"Niste odabrali sliku",Toast.LENGTH_SHORT).show();
-//                         }
-//                    }
-//                }
-//        );
-//
-//        uploadImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent photoPicker = new Intent();
-//                photoPicker.setAction(Intent.ACTION_GET_CONTENT);
-//                photoPicker.setType("image/*");
-//                activityResultLauncher.launch(photoPicker);
-//            }
-//        });
+        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult o) {
+                         if(o.getResultCode()== Activity.RESULT_OK){
+                             Intent data = o.getData();
+                             imageUri = data.getData();
+                             uploadImage.setImageURI(imageUri);
+
+                         } else {
+                             Toast.makeText(AddCategory.this,"Niste odabrali sliku",Toast.LENGTH_SHORT).show();
+                         }
+                    }
+                }
+        );
+
+        uploadImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent photoPicker = new Intent();
+                photoPicker.setAction(Intent.ACTION_GET_CONTENT);
+                photoPicker.setType("image/*");
+                activityResultLauncher.launch(photoPicker);
+            }
+        });
 
 
 
