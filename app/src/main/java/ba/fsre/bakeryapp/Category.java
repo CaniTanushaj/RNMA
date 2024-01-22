@@ -1,6 +1,7 @@
 package ba.fsre.bakeryapp;
 
 public class Category {
+    public int image;
     String id;
     String name;
     String description;

@@ -1,13 +1,13 @@
 package ba.fsre.bakeryapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class PastryActivity extends AppCompatActivity {
 
@@ -23,12 +23,14 @@ public class PastryActivity extends AppCompatActivity {
         ImageView pecivoImg = findViewById(R.id.pecivoImg);
         ImageView pitaImg = findViewById(R.id.pitaImg);
 
+
         kruhImg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                showToast("Kliknuli ste na prvi ImageView");
+            public void onClick(View v)  {
+                openBreadActivity();
             }
         });
+
 
         lisnatoImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +54,15 @@ public class PastryActivity extends AppCompatActivity {
         });
     }
 
+    private void openBreadActivity() {
+        Intent intent = new Intent(this, BreadActivity.class);
+        startActivity(intent);
+    }
+
+
     // Pomoćna metoda za prikazivanje Toast poruke
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
+

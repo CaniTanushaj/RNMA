@@ -35,6 +35,10 @@
             android:name=".PastryActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".BreadActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
