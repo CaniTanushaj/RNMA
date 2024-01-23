@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="0"
-    android:alpha="0.8"
+    android:alpha="0.3"
     android:background="@drawable/slika"
     android:orientation="vertical"
     android:weightSum="4"
@@ -25,8 +25,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="DOBRODOŠLI!"
-            android:textColor="#FDFDFD"
-            android:textColorHighlight="#EFEDED"
+            android:textColor="#FFFFFF"
             android:textSize="45dp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -38,8 +37,7 @@
         android:layout_marginTop="65dp"
         android:layout_marginRight="35dp"
         android:layout_weight="1.5"
-        android:alpha="0.8"
-        android:background="#D8D3D3"
+        android:background="#BFBBBB"
         android:orientation="vertical"
         android:weightSum="3">
 
@@ -52,9 +50,9 @@
             android:layout_marginRight="40dp"
             android:layout_weight="1"
             android:hint="Upišite email.."
-            android:textColor="#494848"
-            android:textColorHint="#494848"
-            android:textSize="12dp"
+            android:textColor="#222121"
+            android:textColorHint="#222121"
+            android:textSize="16dp"
             tools:ignore="TextSizeCheck" />
 
         <EditText
@@ -66,9 +64,9 @@
             android:layout_weight="1"
             android:hint="Upišite lozinku.."
             android:inputType="textPassword"
-            android:textColor="#494848"
-            android:textColorHint="#494848"
-            android:textSize="12dp"
+            android:textColor="#222121"
+            android:textColorHint="#222121"
+            android:textSize="16dp"
             tools:ignore="TextSizeCheck" />
 
         <Button
@@ -77,10 +75,10 @@
             android:layout_height="49dp"
             android:layout_gravity="center"
             android:layout_marginTop="26dp"
-            android:backgroundTint="#9A9797"
+            android:backgroundTint="#252424"
             android:text="Prijava"
             android:textColorHighlight="#252424"
-            android:textColorLink="#494848"
+            android:textColorLink="#252424"
             android:textSize="16sp" />
 
     </LinearLayout>

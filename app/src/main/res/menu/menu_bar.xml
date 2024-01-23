@@ -7,7 +7,8 @@
          <item
              android:id="@+id/categori"
              android:icon="@drawable/nav_image_category"
-             android:title="Tijesta"/>
+             android:title="Tijesta"
+             android:visibility="invisible" />
          <item
              android:id="@+id/history"
              android:icon="@drawable/nav_image_history"

@@ -8,11 +8,25 @@
     android:background="@color/white"
     tools:context=".AddCategory">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:background="#D8D7D7">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/close_button_description"
+            android:src="?attr/actionModeCloseDrawable" />
+    </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="30dp">>
 
         <ImageView
             android:id="@+id/uploadImg"
@@ -20,9 +34,7 @@
             android:layout_height="83dp"
             android:layout_marginLeft="0dp"
             android:background="@color/white"
-            android:src="@drawable/addimage1"/>
-
-
+            android:src="@drawable/addimage1" />
 
 
         <EditText
@@ -52,5 +64,6 @@
             android:textSize="16sp" />
 
     </LinearLayout>
+
 
 </LinearLayout>
