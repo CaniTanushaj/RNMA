@@ -10,6 +10,7 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class AddCategory extends AppCompatActivity {
     private Button addBtn;
     private ImageView uploadImage;
     private Uri imageUri;
+    private ImageButton btnBack;
     final private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
     @Override
@@ -47,6 +49,7 @@ public class AddCategory extends AppCompatActivity {
         description = findViewById(R.id.categoryDescription);
         addBtn = findViewById(R.id.btnInsertData);
         uploadImage = findViewById(R.id.uploadImg);
+        btnBack = findViewById(R.id.btnBack);
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -98,8 +101,7 @@ public class AddCategory extends AppCompatActivity {
             }
         });
 
-        // Dodani dio za gumb za povratak
-        @SuppressLint("WrongViewCast") Button btnBack = findViewById(R.id.btnBack);
+        // Dodani dio za gumb za povratak <-//imagebuton a ne button
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

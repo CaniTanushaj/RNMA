@@ -48,6 +48,16 @@ public class ProfileActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.nav);
         recyclerView = findViewById(R.id.recyclerView);
+        FloatingActionButton addBtn = findViewById(R.id.addBtn);
+
+        //NEMOJ BRISAT OVO NECE RADIT DUGME ZA CRUD KATEGORIJA
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this, AddCategory.class);
+                startActivity(i);
+            }
+        });
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -72,21 +82,21 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        // Postavljanje RecyclerView-a
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        // Dohvat podataka iz Firebase baze
-        getDataFromFirebase();
-
-        // DUGME ZA DODAVANJE KATEGORIJA
-        FloatingActionButton add = findViewById(R.id.addBtn);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(ProfileActivity.this, AddCategory.class);
-                startActivity(i);
-            }
-        });
+//        // Postavljanje RecyclerView-a
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        // Dohvat podataka iz Firebase baze
+//        getDataFromFirebase();
+//
+//        // DUGME ZA DODAVANJE KATEGORIJA
+//        FloatingActionButton add = findViewById(R.id.addBtn);
+//        add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(ProfileActivity.this, AddCategory.class);
+//                startActivity(i);
+//            }
+//        });
 
     }
 
