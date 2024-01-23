@@ -54,7 +54,6 @@ public class AddCategory extends AppCompatActivity {
         Button addBtn = findViewById(R.id.btnInsertData);
         ImageView uploadImage = findViewById(R.id.uploadImg);
 
-            //TREBA DORADIT JER CRESHA UPLOAD
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {

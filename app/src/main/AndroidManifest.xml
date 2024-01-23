@@ -39,6 +39,19 @@
             android:name=".BreadActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".PieActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PuffPastryAcitivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".BagleActivity"
+            android:exported="false" />
+
+
     </application>
 
 </manifest>
