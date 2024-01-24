@@ -8,6 +8,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -32,6 +35,12 @@ import com.google.firebase.storage.UploadTask;
 
 public class AddCategory extends AppCompatActivity {
 
+    String[] item = {"Kruh","Pecivo","Lisnato","Burek"};
+
+    AutoCompleteTextView autoCompele;
+    public String category;
+
+    ArrayAdapter<String> adapterItem;
     private EditText name;
     private EditText description;
     private Button addBtn;
@@ -50,6 +59,18 @@ public class AddCategory extends AppCompatActivity {
         addBtn = findViewById(R.id.btnInsertData);
         uploadImage = findViewById(R.id.uploadImg);
         btnBack = findViewById(R.id.btnBack);
+        autoCompele = findViewById(R.id.auto_complete_txt);
+        adapterItem = new ArrayAdapter<String>(this,R.layout.list_item,item);
+
+        autoCompele.setAdapter(adapterItem);
+
+        autoCompele.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                     category = parent.getItemAtPosition(position).toString();
+
+            }
+        });
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -97,7 +118,7 @@ public class AddCategory extends AppCompatActivity {
                     return;
                 }
 
-                insertCategory(categoryName, categoryDescription, imageUri);
+                insertCategory(categoryName, categoryDescription,category, imageUri);
             }
         });
 
@@ -111,18 +132,19 @@ public class AddCategory extends AppCompatActivity {
 
     }
 
-    private void insertCategory(String name, String description, Uri imageUri) {
+    private void insertCategory(String name, String description,String cat, Uri imageUri) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference dbRef = database.getReference("categories");
         StorageReference imageRef = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
         String id = dbRef.push().getKey();
+
         imageRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Category category = new Category(name, description, id, uri.toString());
+                        Category category = new Category(name, description, id,cat, uri.toString());
                         dbRef.child(id).setValue(category).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
