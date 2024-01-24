@@ -122,7 +122,7 @@ public class AddCategory extends AppCompatActivity {
                 imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Category category = new Category(id, name, description, uri.toString());
+                        Category category = new Category(name, description, id, uri.toString());
                         dbRef.child(id).setValue(category).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {

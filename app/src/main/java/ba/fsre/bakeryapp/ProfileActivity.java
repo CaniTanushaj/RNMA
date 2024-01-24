@@ -24,8 +24,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity {
     FirebaseAuth auth;
@@ -35,7 +40,9 @@ public class ProfileActivity extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigationView;
     RecyclerView recyclerView;
-    MyReclyerViewAdapter adapter;
+    ArrayList<Category> categoryList;
+    CategoryAdapter adapter;
+    final private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("categories");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,36 +89,30 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-//        // Postavljanje RecyclerView-a
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        // Dohvat podataka iz Firebase baze
-//        getDataFromFirebase();
-//
-//        // DUGME ZA DODAVANJE KATEGORIJA
-//        FloatingActionButton add = findViewById(R.id.addBtn);
-//        add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(ProfileActivity.this, AddCategory.class);
-//                startActivity(i);
-//            }
-//        });
-
-    }
-
-    private void getDataFromFirebase() {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("categories");
-
-        FirebaseRecyclerOptions<Category> options =
-                new FirebaseRecyclerOptions.Builder<Category>()
-                        .setQuery(databaseReference, Category.class)
-                        .build();
-
-        adapter = new MyReclyerViewAdapter(options);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        categoryList = new ArrayList<>();
+        adapter = new CategoryAdapter(categoryList,this);
         recyclerView.setAdapter(adapter);
-        adapter.startListening();
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    Category categoryClass = dataSnapshot.getValue(Category.class);
+                    categoryList.add(categoryClass);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
+
+
 
     private void fragmentR(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -120,11 +121,11 @@ public class ProfileActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (adapter != null) {
-            adapter.stopListening();
-        }
-    }
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        if (adapter != null) {
+//            adapter.stopListening();
+//        }
+//    }
 }
