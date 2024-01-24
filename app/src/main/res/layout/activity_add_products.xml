@@ -54,7 +54,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5dp"
             android:layout_marginBottom="20dp"
-            android:text="Molimo unesite sve potrebne sastojke za vaš proizvod"
+            android:text="Molimo unesite sve potrebne sastojke za vaš proizvod!"
             android:textSize="16sp"
             android:textStyle="bold" />
         <!-- First Row -->
@@ -183,6 +183,23 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:hint="Smjesa za krosane" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </TableRow>
+
+        <TableRow>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutCategory"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/editTextCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:hint="Kategorija proizvoda" />
             </com.google.android.material.textfield.TextInputLayout>
         </TableRow>
     </TableLayout>
