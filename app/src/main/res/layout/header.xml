@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="175dp"
     android:background="#D8D3D3"
@@ -10,7 +11,8 @@
     <ImageView
         android:layout_width="77dp"
         android:layout_height="46dp"
-        android:src="@drawable/_87103802_565470145264752_5911948296000355530_n_removebg_preview" />
+        android:src="@drawable/_87103802_565470145264752_5911948296000355530_n_removebg_preview"
+        tools:srcCompat="@drawable/logo" />
 
     <TextView
         android:layout_width="wrap_content"
