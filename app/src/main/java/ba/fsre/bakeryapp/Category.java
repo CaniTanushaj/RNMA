@@ -3,16 +3,16 @@ package ba.fsre.bakeryapp;
 public class Category {
     String id;
     String name;
-    String description;
+    String weight;
     String category;
     String imageURL;
 
     public Category() {
     }
 
-    public Category(String name, String description,String id,String category,String imageURL) {
+    public Category(String name, String weight,String id,String category,String imageURL) {
         this.name = name;
-        this.description = description;
+        this.weight = weight;
         this.id=id;
         this.imageURL=imageURL;
         this.category=category;
@@ -34,8 +34,8 @@ public class Category {
         return id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getWeight() {
+        return weight;
     }
 
     public void setName(String name) {
@@ -46,8 +46,8 @@ public class Category {
         this.id = id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setWeight(String Weight) {
+        this.weight = Weight;
     }
 
     public String getImageURL() {

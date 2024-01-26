@@ -95,9 +95,10 @@ public class ProfileActivity extends AppCompatActivity {
         adapter = new CategoryAdapter(categoryList,this);
         recyclerView.setAdapter(adapter);
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.orderByChild("category").equalTo("Pecivo").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                categoryList.clear(); // Clear existing data before adding filtered data
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     Category categoryClass = dataSnapshot.getValue(Category.class);
                     categoryList.add(categoryClass);

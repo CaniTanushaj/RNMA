@@ -60,11 +60,12 @@
             android:hint="Unesite naziv tijesta" />
 
         <EditText
-            android:id="@+id/categoryDescription"
+            android:id="@+id/categoryWeight"
             android:layout_width="match_parent"
             android:layout_height="111dp"
             android:layout_marginTop="20dp"
-            android:hint="Unesite opis " />
+            android:inputType="number"
+            android:hint="Unesite gramazu " />
 
 
 

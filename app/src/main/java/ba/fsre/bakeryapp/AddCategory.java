@@ -42,7 +42,7 @@ public class AddCategory extends AppCompatActivity {
 
     ArrayAdapter<String> adapterItem;
     private EditText name;
-    private EditText description;
+    private EditText weight;
     private Button addBtn;
     private ImageView uploadImage;
     private Uri imageUri;
@@ -55,7 +55,7 @@ public class AddCategory extends AppCompatActivity {
         setContentView(R.layout.activity_add_category);
 
         name = findViewById(R.id.categoryName);
-        description = findViewById(R.id.categoryDescription);
+        weight = findViewById(R.id.categoryWeight);
         addBtn = findViewById(R.id.btnInsertData);
         uploadImage = findViewById(R.id.uploadImg);
         btnBack = findViewById(R.id.btnBack);
@@ -103,14 +103,14 @@ public class AddCategory extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String categoryName = name.getText().toString();
-                String categoryDescription = description.getText().toString();
+                String categoryWeight = weight.getText().toString();
 
                 if (categoryName.isEmpty()) {
                     name.setError("Prazno polje");
                     return;
                 }
-                if (categoryDescription.isEmpty()) {
-                    description.setError("Prazno polje");
+                if (categoryWeight.isEmpty()) {
+                    weight.setError("Prazno polje");
                     return;
                 }
                 if (imageUri == null) {
@@ -118,7 +118,7 @@ public class AddCategory extends AppCompatActivity {
                     return;
                 }
 
-                insertCategory(categoryName, categoryDescription,category, imageUri);
+                insertCategory(categoryName, categoryWeight,category, imageUri);
             }
         });
 
@@ -132,7 +132,7 @@ public class AddCategory extends AppCompatActivity {
 
     }
 
-    private void insertCategory(String name, String description,String cat, Uri imageUri) {
+    private void insertCategory(String name, String weight,String cat, Uri imageUri) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference dbRef = database.getReference("categories");
         StorageReference imageRef = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
@@ -144,7 +144,7 @@ public class AddCategory extends AppCompatActivity {
                 imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Category category = new Category(name, description, id,cat, uri.toString());
+                        Category category = new Category(name, weight, id,cat, uri.toString());
                         dbRef.child(id).setValue(category).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
