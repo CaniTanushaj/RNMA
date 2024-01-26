@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -42,6 +43,11 @@ public class ProfileActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Category> categoryList;
     CategoryAdapter adapter;
+
+    AppCompatButton kruh;
+    AppCompatButton pecivo;
+    AppCompatButton burek;
+    AppCompatButton lisnato;
     final private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("categories");
 
     @Override
@@ -54,8 +60,47 @@ public class ProfileActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.nav);
-        recyclerView = findViewById(R.id.recyclerView);
+//        recyclerView = findViewById(R.id.recyclerView);
+        kruh = findViewById(R.id.kruhBtn);
+        pecivo = findViewById(R.id.pevicoBtn);
+        burek = findViewById(R.id.burekBtn);
+        lisnato = findViewById(R.id.lisnatoBtn);
+
+
         FloatingActionButton addBtn = findViewById(R.id.addBtn);
+
+        //Dugme za ljeb
+        kruh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this, BreadActivity.class);
+                startActivity(i);
+            }
+        });
+//        Dugme za pecivo
+        pecivo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this, BagleActivity.class);
+                startActivity(i);
+            }
+        });
+        //Dugme za rekbu
+        burek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this, PieActivity.class);
+                startActivity(i);
+            }
+        });
+        //Dugme za tolisna
+        lisnato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this, PuffPastryActivity.class);
+                startActivity(i);
+            }
+        });
 
         //NEMOJ BRISAT OVO NECE RADIT DUGME ZA CRUD KATEGORIJA
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -89,28 +134,28 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        categoryList = new ArrayList<>();
-        adapter = new CategoryAdapter(categoryList,this);
-        recyclerView.setAdapter(adapter);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        categoryList = new ArrayList<>();
+//        adapter = new CategoryAdapter(categoryList,this);
+//        recyclerView.setAdapter(adapter);
 
-        databaseReference.orderByChild("category").equalTo("Pecivo").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                categoryList.clear(); // Clear existing data before adding filtered data
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Category categoryClass = dataSnapshot.getValue(Category.class);
-                    categoryList.add(categoryClass);
-                }
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+//        databaseReference.orderByChild("category").equalTo("Pecivo").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                categoryList.clear(); // Clear existing data before adding filtered data
+//                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+//                    Category categoryClass = dataSnapshot.getValue(Category.class);
+//                    categoryList.add(categoryClass);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
     }
 
 

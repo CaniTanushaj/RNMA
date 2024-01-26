@@ -53,10 +53,42 @@
             android:background="@color/white">
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:id="@+id/kruhBtn"
+                android:text="Kruh"
+                android:background="#DDCFCF">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginTop="80dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/pevicoBtn"
+                android:text="Pecivo"
+                android:background="#DDCFCF">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginTop="140dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/burekBtn"
+                android:text="Burek"
+                android:background="#DDCFCF">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginTop="200dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lisnatoBtn"
+                android:text="Lisnato"
+                android:background="#DDCFCF">
+            </androidx.appcompat.widget.AppCompatButton>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addBtn"

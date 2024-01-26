@@ -36,7 +36,7 @@ import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class BagleActivity extends AppCompatActivity {
+public class PuffPastryActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser loggedUser;
 
@@ -51,7 +51,7 @@ public class BagleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bagle_activity);
+        setContentView(R.layout.puff_pastry_activity);
         this.auth = FirebaseAuth.getInstance();
         this.loggedUser = this.auth.getCurrentUser();
 
@@ -81,12 +81,12 @@ public class BagleActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.categori) {
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    Toast.makeText(BagleActivity.this, "Kategorije", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(BagleActivity.this, PastryActivity.class));
+                    Toast.makeText(PuffPastryActivity.this, "Kategorije", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(PuffPastryActivity.this, PastryActivity.class));
                 }
                 if (item.getItemId() == R.id.history) {
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    Toast.makeText(BagleActivity.this, "Povijest", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PuffPastryActivity.this, "Povijest", Toast.LENGTH_SHORT).show();
                     fragmentR(new HistoryFragment());
                 }
                 return true;
@@ -99,7 +99,7 @@ public class BagleActivity extends AppCompatActivity {
         adapter = new CategoryAdapter(categoryList,this);
         recyclerView.setAdapter(adapter);
 
-        databaseReference.orderByChild("category").equalTo("Pecivo").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.orderByChild("category").equalTo("Lisnato").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 categoryList.clear(); // Clear existing data before adding filtered data
