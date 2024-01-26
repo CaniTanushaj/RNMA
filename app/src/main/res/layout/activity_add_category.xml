@@ -11,7 +11,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="37dp"
+        android:layout_height="54dp"
         android:background="#D8D7D7">
 
         <ImageButton
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="@string/select"
+        android:hint="Odaberite kategoriju"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         >
         <AutoCompleteTextView
@@ -68,11 +68,10 @@
             android:hint="Unesite gramazu " />
 
 
-
         <Button
             android:id="@+id/btnInsertData"
             android:layout_width="221dp"
-            android:layout_height="49dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="26dp"
             android:backgroundTint="#9A9797"

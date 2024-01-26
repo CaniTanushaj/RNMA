@@ -39,11 +39,12 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/menuButton"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="278dp"
+            android:layout_marginEnd="291dp"
             android:layout_marginBottom="20dp"
-            android:text="Tijesto"
-            android:textColorHint="#FFFFFF"
-            android:textSize="20sp" />
+            android:text="Kruh"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <FrameLayout
             android:id="@+id/frameLayout"
