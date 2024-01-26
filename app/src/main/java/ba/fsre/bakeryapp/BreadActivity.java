@@ -1,12 +1,10 @@
 package ba.fsre.bakeryapp;
 
 
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,8 +19,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,8 +29,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class BreadActivity extends AppCompatActivity {
     FirebaseAuth auth;
@@ -52,6 +46,8 @@ public class BreadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bread_activity);
+
+
         this.auth = FirebaseAuth.getInstance();
         this.loggedUser = this.auth.getCurrentUser();
 
@@ -69,6 +65,7 @@ public class BreadActivity extends AppCompatActivity {
 //                startActivity(i);
 //            }
 //        });
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -126,3 +123,4 @@ public class BreadActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 }
+

@@ -7,15 +7,16 @@ public class Category {
     String category;
     String imageURL;
 
+
     public Category() {
     }
 
-    public Category(String name, String weight,String id,String category,String imageURL) {
+    public Category(String name, String weight, String id, String category, String imageURL) {
         this.name = name;
         this.weight = weight;
-        this.id=id;
-        this.imageURL=imageURL;
-        this.category=category;
+        this.id = id;
+        this.imageURL = imageURL;
+        this.category = category;;
     }
 
     public String getCategory() {
@@ -46,8 +47,8 @@ public class Category {
         this.id = id;
     }
 
-    public void setWeight(String Weight) {
-        this.weight = Weight;
+    public void setWeight(String weight) {
+        this.weight = weight;
     }
 
     public String getImageURL() {
@@ -57,4 +58,6 @@ public class Category {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+
+
 }
