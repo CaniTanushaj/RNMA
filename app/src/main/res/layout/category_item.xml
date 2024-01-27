@@ -51,9 +51,9 @@
         android:layout_marginBottom="2dp"
         app:cardCornerRadius="12dp">
 
-        <!-- Unos broja -->
+        <!-- Unos broja (EditText) -->
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/itemCount"
             android:layout_width="152dp"
             android:layout_height="match_parent"
             android:layout_gravity="center|end"
