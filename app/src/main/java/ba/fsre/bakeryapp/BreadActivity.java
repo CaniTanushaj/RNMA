@@ -66,53 +66,7 @@
             navigationView = findViewById(R.id.nav);
             recyclerView = findViewById(R.id.recyclerView);
             finalBtn = findViewById(R.id.izracunajBtn);
-            finalBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    totalResult = 0;
 
-                    // Read the data from the database for the specific category (e.g., "Kruh")
-                    databaseReference.orderByChild("category").equalTo("Kruh").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
-                                // Get the value of the "weight" attribute from Firebase
-                                String weightString = itemSnapshot.child("weight").getValue(String.class);
-
-                                // Get the item ID (replace with your actual item identifier)
-                                String itemId = itemSnapshot.getKey();
-
-                                // Get the itemCount for each item from the corresponding EditText
-                                EditText itemCountEditText = findViewById(R.id.itemCount);
-                                String itemCountString = itemCountEditText.getText().toString();
-
-                                // Check if both weight and itemCount are not null and itemCount is not empty
-                                if (!TextUtils.isEmpty(weightString) && !TextUtils.isEmpty(itemCountString)) {
-                                    Double weight = Double.parseDouble(weightString);
-                                    Double itemCount = Double.parseDouble(itemCountString);
-
-                                    // Perform the multiplication for each item
-                                    double result = weight * itemCount;
-                                    totalResult += result;
-                                } else {
-                                    // Handle the case where weight or itemCount is null or itemCount is empty
-                                    Toast.makeText(BreadActivity.this, "Weight or itemCount is null or itemCount is empty for item", Toast.LENGTH_SHORT).show();
-                                    Log.e("BreadActivity", "Weight or itemCount is null or itemCount is empty for item with key: " + itemId);
-                                }
-                            }
-
-                            // Display the total in a single Toast after processing all items
-                            Toast.makeText(BreadActivity.this, "Total Result: " + totalResult, Toast.LENGTH_SHORT).show();
-                            Log.d("BreadActivity", "Total Result: " + totalResult);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            // Handle errors
-                        }
-                    });
-                }
-            });
 
 
             //        FloatingActionButton addBtn = findViewById(R.id.addBtn);
@@ -172,6 +126,48 @@
 
                 }
             });
+
+
+
+            finalBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    totalResult = 0;
+
+                    for (int i = 0; i < categoryList.size(); i++) {
+                        Category category = categoryList.get(i);
+
+                        // Get the multiplier from the EditText
+                        String itemCountString = category.getItemCount();
+
+                        // Check if itemCount is not empty
+                        if (!TextUtils.isEmpty(itemCountString)) {
+                            double itemCount = Double.parseDouble(itemCountString);
+
+                            // Get the value of the "weight" attribute from each item
+                            Double weight = Double.valueOf(category.getWeight());
+
+                            // Check if weight is not null
+                            if (weight != null) {
+                                // Perform the multiplication
+                                double result = weight * itemCount;
+                                totalResult += result;
+                            } else {
+                                // Handle the case where weight is null
+                                Toast.makeText(BreadActivity.this, "Weight is null for an item", Toast.LENGTH_SHORT).show();
+                                Log.e("BreadActivity", "Weight is null for item at position: " + i);
+                            }
+                        } else {
+                            Toast.makeText(BreadActivity.this, "Please enter a valid item count for item at position: " + i, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    // Display the total in a single Toast after processing all items
+                    Toast.makeText(BreadActivity.this, "Total Result: " + totalResult, Toast.LENGTH_SHORT).show();
+                    Log.d("BreadActivity", "Total Result: " + totalResult);
+                }
+            });
+
         }
 
 
@@ -182,5 +178,6 @@
             fragmentTransaction.replace(R.id.frameLayout, fragment);
             fragmentTransaction.commit();
         }
+
     }
 

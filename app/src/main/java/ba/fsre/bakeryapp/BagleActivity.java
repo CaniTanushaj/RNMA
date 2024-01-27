@@ -5,8 +5,12 @@ package ba.fsre.bakeryapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,6 +50,8 @@ public class BagleActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Category> categoryList;
     CategoryAdapter adapter;
+    Button finalBtn;
+    double totalResult;
     final private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("categories");
 
     @Override
@@ -59,6 +65,48 @@ public class BagleActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.nav);
         recyclerView = findViewById(R.id.recyclerView);
+        finalBtn = findViewById(R.id.izracunajBtn);
+        finalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                totalResult = 0;
+
+                for (int i = 0; i < categoryList.size(); i++) {
+                    View itemView = recyclerView.getChildAt(i);
+                    EditText itemCountEditText = itemView.findViewById(R.id.itemCount);
+
+                    // Get the multiplier from the EditText
+                    String itemCountString = itemCountEditText.getText().toString();
+
+                    // Check if itemCount is not empty
+                    if (!TextUtils.isEmpty(itemCountString)) {
+
+                        double itemCount = Double.parseDouble(itemCountString);
+
+                        // Get the value of the "weight" attribute from each item
+                        Double weight = Double.valueOf(categoryList.get(i).getWeight());
+
+
+                        // Check if weight is not null
+                        if (weight != null) {
+                            // Perform the multiplication
+                            double result = weight * itemCount;
+                            totalResult += result;
+                        } else {
+                            // Handle the case where weight is null
+                            Toast.makeText(BagleActivity.this, "Weight is null for an item", Toast.LENGTH_SHORT).show();
+                            Log.e("BreadActivity", "Weight is null for item at position: " + i);
+                        }
+                    } else {
+                        Toast.makeText(BagleActivity.this, "Please enter a valid item count for item at position: " + i, Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                // Display the total in a single Toast after processing all items
+                Toast.makeText(BagleActivity.this, "Total Result: " + totalResult, Toast.LENGTH_SHORT).show();
+                Log.d("BreadActivity", "Total Result: " + totalResult);
+            }
+        });
 //        FloatingActionButton addBtn = findViewById(R.id.addBtn);
 
         //NEMOJ BRISAT OVO NECE RADIT DUGME ZA CRUD KATEGORIJA

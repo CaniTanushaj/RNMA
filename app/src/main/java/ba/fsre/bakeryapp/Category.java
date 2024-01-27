@@ -1,11 +1,14 @@
 package ba.fsre.bakeryapp;
 
+import android.widget.EditText;
+
 public class Category {
     String id;
     String name;
     String weight;
     String category;
     String imageURL;
+    private String  itemCount;
 
 
     public Category() {
@@ -60,5 +63,11 @@ public class Category {
     }
 
 
+    public String getItemCount() {
+        return itemCount;
+    }
+    public void setItemCount(String itemCount) {
+        this.itemCount = itemCount;
+    }
 
 }
