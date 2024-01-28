@@ -119,6 +119,9 @@ public class ProfileActivity extends AppCompatActivity {
                     drawerLayout.closeDrawer(GravityCompat.START);
                     Toast.makeText(ProfileActivity.this, "Tijesta", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(ProfileActivity.this, PastryActivity.class));
+                    Toast.makeText(ProfileActivity.this, "Kategorije", Toast.LENGTH_SHORT).show();
+
+
                 }
                 if (item.getItemId() == R.id.history) {
                     drawerLayout.closeDrawer(GravityCompat.START);
@@ -129,30 +132,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        categoryList = new ArrayList<>();
-//        adapter = new CategoryAdapter(categoryList,this);
-//        recyclerView.setAdapter(adapter);
 
-//        databaseReference.orderByChild("category").equalTo("Pecivo").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                categoryList.clear(); // Clear existing data before adding filtered data
-//                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-//                    Category categoryClass = dataSnapshot.getValue(Category.class);
-//                    categoryList.add(categoryClass);
-//                }
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
     }
-
 
 
     private void fragmentR(Fragment fragment) {
@@ -162,11 +143,4 @@ public class ProfileActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        if (adapter != null) {
-//            adapter.stopListening();
-//        }
-//    }
 }
