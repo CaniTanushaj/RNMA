@@ -5,8 +5,11 @@ package ba.fsre.bakeryapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,6 +49,8 @@ public class PieActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Category> categoryList;
     CategoryAdapter adapter;
+    Button finalBtn;
+    double totalResult;
     final private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("categories");
 
     @Override
@@ -59,6 +64,7 @@ public class PieActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.nav);
         recyclerView = findViewById(R.id.recyclerView);
+        finalBtn = findViewById(R.id.izracunajBtn);
 //        FloatingActionButton addBtn = findViewById(R.id.addBtn);
 
         //NEMOJ BRISAT OVO NECE RADIT DUGME ZA CRUD KATEGORIJA
@@ -113,6 +119,45 @@ public class PieActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        finalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                totalResult = 0;
+
+                for (int i = 0; i < categoryList.size(); i++) {
+                    Category category = categoryList.get(i);
+
+                    // Get the multiplier from the EditText
+                    String itemCountString = category.getItemCount();
+
+                    // Check if itemCount is not empty
+                    if (!TextUtils.isEmpty(itemCountString)) {
+                        double itemCount = Double.parseDouble(itemCountString);
+
+                        // Get the value of the "weight" attribute from each item
+                        Double weight = Double.valueOf(category.getWeight());
+
+                        // Check if weight is not null
+                        if (weight != null) {
+                            // Perform the multiplication
+                            double result = weight * itemCount;
+                            totalResult += result;
+                        } else {
+                            // Handle the case where weight is null
+                            Toast.makeText(PieActivity.this, "Weight is null for an item", Toast.LENGTH_SHORT).show();
+                            Log.e("BreadActivity", "Weight is null for item at position: " + i);
+                        }
+                    } else {
+                        Toast.makeText(PieActivity.this, "Please enter a valid item count for item at position: " + i, Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                // Display the total in a single Toast after processing all items
+                Toast.makeText(PieActivity.this, "Total Result: " + totalResult/1000 +"kg", Toast.LENGTH_SHORT).show();
+                Log.d("BreadActivity", "Total Result: " + totalResult);
             }
         });
     }

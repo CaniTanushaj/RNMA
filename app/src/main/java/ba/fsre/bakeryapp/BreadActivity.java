@@ -163,7 +163,7 @@
                     }
 
                     // Display the total in a single Toast after processing all items
-                    Toast.makeText(BreadActivity.this, "Total Result: " + totalResult, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BreadActivity.this, "Total Result: " + totalResult/1000 +"kg",Toast.LENGTH_SHORT).show();
                     Log.d("BreadActivity", "Total Result: " + totalResult);
                 }
             });
