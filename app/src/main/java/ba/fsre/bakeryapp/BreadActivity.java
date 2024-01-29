@@ -188,7 +188,7 @@
             myDialog.setContentView(R.layout.popupresult);
 
             // Set the message text
-            TextView popupMessage = myDialog.findViewById(R.id.dodatnaSmjesa);
+            TextView popupMessage = myDialog.findViewById(R.id.ukupnaMasa);
             popupMessage.setText("Sveukupna smjesa: " + Double.valueOf(totalResult/1000)+ "kg");
 
             // Set up the close button

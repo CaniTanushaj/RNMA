@@ -7,15 +7,30 @@ public class Sastojci {
     private double kvasac;
     private double aditiv;
     private double ulje;
+    private double secer;
     private double dodatnasmjesa;
 
     public Sastojci() {
+    }
+
+    public Sastojci(double brasno, double voda, double sol) {
+        this.brasno = brasno;
+        this.voda = voda;
+        this.sol = sol;
     }
 
     public Sastojci(double brasno, int voda, int sol) {
         this.brasno = brasno;
         this.voda = voda;
         this.sol = sol;
+    }
+
+    public Sastojci(double brasno, double voda, double sol, double kvasac, double aditiv) {
+        this.brasno = brasno;
+        this.voda = voda;
+        this.sol = sol;
+        this.kvasac = kvasac;
+        this.aditiv = aditiv;
     }
 
     public Sastojci(double brasno, int voda, int sol, int kvasac, int aditiv) {
@@ -26,13 +41,25 @@ public class Sastojci {
         this.aditiv = aditiv;
     }
 
-    public Sastojci(double brasno, int voda, int sol, int kvasac, int aditiv, int ulje) {
+    public Sastojci(double brasno, double voda, double sol, double kvasac, double aditiv, double ulje, double secer) {
         this.brasno = brasno;
         this.voda = voda;
         this.sol = sol;
         this.kvasac = kvasac;
         this.aditiv = aditiv;
         this.ulje = ulje;
+        this.secer = secer;
+    }
+
+    public Sastojci(double brasno, double voda, double sol, double kvasac, double aditiv, double ulje, double secer, double dodatnasmjesa) {
+        this.brasno = brasno;
+        this.voda = voda;
+        this.sol = sol;
+        this.kvasac = kvasac;
+        this.aditiv = aditiv;
+        this.ulje = ulje;
+        this.secer = secer;
+        this.dodatnasmjesa = dodatnasmjesa;
     }
 
     public Sastojci(double brasno, int voda, int sol, int kvasac, int aditiv, int ulje, int dodatnasmjesa) {
@@ -51,6 +78,17 @@ public class Sastojci {
         this.sol=rezultat*0.01219;
         this.kvasac=rezultat*0.0091463;
         this.aditiv=rezultat*0.0012195;
+        return null;
+    }
+
+    public String sPeciva(double rezultat){
+        this.brasno=rezultat*0.602409639;
+        this.voda=rezultat*0.313253012;
+        this.sol=rezultat*0.012048193;
+        this.kvasac=rezultat*0.009036145;
+        this.aditiv=rezultat*0.001204819;
+        this.ulje=rezultat*0.036144578;
+        this.secer=rezultat*0.024096386;
         return null;
     }
 
@@ -115,5 +153,14 @@ public class Sastojci {
 
     public void setDodatnasmjesa(int dodatnasmjesa) {
         this.dodatnasmjesa = dodatnasmjesa;
+    }
+
+    public double getSecer() {
+        String formattedValue = String.format("%.2f", secer);
+        return Double.valueOf(formattedValue);
+    }
+
+    public void setSecer(double secer) {
+        this.secer = secer;
     }
 }
