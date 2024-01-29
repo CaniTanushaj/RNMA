@@ -2,6 +2,7 @@
 
 
     import android.annotation.SuppressLint;
+    import android.app.Dialog;
     import android.content.Intent;
     import android.os.Bundle;
     import android.text.TextUtils;
@@ -10,6 +11,7 @@
     import android.view.View;
     import android.widget.Button;
     import android.widget.EditText;
+    import android.widget.TextView;
     import android.widget.Toast;
 
     import androidx.annotation.NonNull;
@@ -32,7 +34,9 @@
     import com.google.firebase.database.DatabaseReference;
     import com.google.firebase.database.FirebaseDatabase;
     import com.google.firebase.database.ValueEventListener;
+    import com.google.protobuf.StringValue;
 
+    import java.text.DecimalFormat;
     import java.util.ArrayList;
     import java.util.HashMap;
     import java.util.Map;
@@ -50,6 +54,7 @@
         EditText itemCountEditText;
         Button finalBtn;
         public double totalResult;
+        Dialog myDialog;
         final private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("categories");
 
         @Override
@@ -66,6 +71,7 @@
             navigationView = findViewById(R.id.nav);
             recyclerView = findViewById(R.id.recyclerView);
             finalBtn = findViewById(R.id.izracunajBtn);
+            myDialog = new Dialog(this);
 
 
 
@@ -163,8 +169,7 @@
                     }
 
                     // Display the total in a single Toast after processing all items
-                    Toast.makeText(BreadActivity.this, "Total Result: " + totalResult/1000 +"kg",Toast.LENGTH_SHORT).show();
-                    Log.d("BreadActivity", "Total Result: " + totalResult);
+                    showPopupDialog(totalResult/1000);
                 }
             });
 
@@ -177,6 +182,49 @@
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frameLayout, fragment);
             fragmentTransaction.commit();
+        }
+
+        private void showPopupDialog(Double result) {
+            myDialog.setContentView(R.layout.popupresult);
+
+            // Set the message text
+            TextView popupMessage = myDialog.findViewById(R.id.dodatnaSmjesa);
+            popupMessage.setText("Sveukupna smjesa: " + Double.valueOf(totalResult/1000)+ "kg");
+
+            // Set up the close button
+            TextView closeButton = myDialog.findViewById(R.id.txtclose);
+            closeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myDialog.dismiss(); // Close the dialog
+                }
+            });
+            Sastojci kruh = new Sastojci();
+            kruh.sKruha(result);
+
+
+            // Set up other TextViews with your ingredient data
+            TextView brasnoTextView = myDialog.findViewById(R.id.brasno);
+            brasnoTextView.setText("Brasno: "+ kruh.getBrasno()+"kg");
+
+            TextView vodaTextView = myDialog.findViewById(R.id.voda);
+            vodaTextView.setText("Voda: "+ kruh.getVoda()+"kg");
+
+            TextView solTextView = myDialog.findViewById(R.id.sol);
+            solTextView.setText("Sol: "+ kruh.getSol()+"kg");
+
+            TextView kvasacTextView = myDialog.findViewById(R.id.kvasac);
+            kvasacTextView.setText("Kvasac: "+ kruh.getKvasac()+"kg");
+
+            TextView aditivTextView = myDialog.findViewById(R.id.additiv);
+            aditivTextView.setText("Aditiv: "+ kruh.getAditiv()+"kg");
+
+
+
+            // Repeat the above for other ingredient TextViews
+
+            // Show the dialog
+            myDialog.show();
         }
 
     }
