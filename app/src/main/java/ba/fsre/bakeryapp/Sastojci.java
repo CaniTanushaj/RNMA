@@ -72,6 +72,13 @@ public class Sastojci {
         this.dodatnasmjesa = dodatnasmjesa;
     }
 
+    public String sBureka(double rezultat){
+        this.brasno=rezultat*0.65;
+        this.voda=rezultat*0.337;
+        this.sol=rezultat*0.01219;
+        return null;
+    }
+
     public String sKruha(double rezultat){
         this.brasno=rezultat*0.60;
         this.voda=rezultat*0.365;
@@ -89,6 +96,18 @@ public class Sastojci {
         this.aditiv=rezultat*0.001204819;
         this.ulje=rezultat*0.036144578;
         this.secer=rezultat*0.024096386;
+        return null;
+    }
+
+    public String sLisnata(double rezultat){
+        this.brasno=rezultat*0.457;
+        this.voda=rezultat*0.313253012;
+        this.sol=rezultat*0.012048193;
+        this.kvasac=rezultat*0.009036145;
+        this.aditiv=rezultat*0.001204819;
+        this.ulje=rezultat*0.036144578;
+        this.secer=rezultat*0.024096386;
+        this.dodatnasmjesa=rezultat*0.1428;
         return null;
     }
 
